@@ -226,6 +226,7 @@ The reset() function can have a input and make a new pointer with it after delet
 
 # Note
 You can communicate with your classmates, but plagiarism is forbidden in John Class. We welcome idea exchanges, but any form of cheat will be taken seriously. If you're not sure about your behavior, please talk with us in case of misunderstandings.
+</br>
 
 # Grade
 - Allocator: 30%
