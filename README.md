@@ -1,5 +1,5 @@
 # John Hopcroft class Project3 : Smart-Pointers
-<p  align="center"> <b>Project3 - 2023 Fall <br> Deadline: Monday September 27th - 23:59 </b> </p>
+<p  align="center"> <b>Project3 - 2023 Fall <br> Deadline: Monday September 28th - 18:55 </b> </p>
 
 ## Outline
 
