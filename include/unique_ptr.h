@@ -42,4 +42,12 @@ struct UniquePtr {
     void reset(_Tp *);
 };
 
+/**
+ * @note If you cannot understand, please refer to the following link:
+ * https://en.cppreference.com/w/cpp/language/parameter_pack
+ * Otherwise, you may contact the TA.
+ */
+template <class _Tp, class ..._Args>
+UniquePtr <_Tp> make_unique(_Args &&...);
+
 #endif //UNIQUE_PTR
