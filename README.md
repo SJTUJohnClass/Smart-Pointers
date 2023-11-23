@@ -49,7 +49,7 @@ As you already know you cannot copy a UniquePtr, make arrangements so the follow
 	```
 
 - **Operator=**
-Exactly like the previous section we should not be able to write the following code as well. Make the copiler to produce an error for this code.
+Exactly like the previous section we should not be able to write the following code as well. Make the compiler to produce an error for this code.
 
 	```cpp
 	UniquePtr<int> ptr1{new int{10}};
@@ -79,7 +79,7 @@ Smart pointers can use the arrow operator like normal pointers. make this code w
 	```
 
 - **reset**
-The reset() function will delete the ponter and assign `nullptr` to it:
+The reset() function will delete the pointer and assign `nullptr` to it:
 
 	```cpp
 	void reset();
@@ -224,18 +224,5 @@ The reset() function can have a input and make a new pointer with it after delet
 	Make this arrangement for both `UniquePtr` and `SharedPtr` classes.
 </br>
 
-# Note
-You can communicate with your classmates, but plagiarism is forbidden in John Class. We welcome idea exchanges, but any form of cheat will be taken seriously. If you're not sure about your behavior, please talk with us in case of misunderstandings.
-
-You can test your code on https://acm.sjtu.edu.cn/OnlineJudge/problemset/654.
-
-</br>
-
-# Grade
-- Allocator: 30%
-- Shared_ptr: 30%
-- Unique_ptr: 30%
-- Code Review: 10%
-
 <br/>
-<p  align="center"> <b>GOOD LUCK</b> </p>
+<p  align="center"> <b>GOOD LUCK</b> </p> 
