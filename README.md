@@ -224,5 +224,18 @@ The reset() function can have a input and make a new pointer with it after delet
 	Make this arrangement for both `UniquePtr` and `SharedPtr` classes.
 </br>
 
+# Note
+You can communicate with your classmates, but plagiarism is forbidden in John Class. We welcome idea exchanges, but any form of cheat will be taken seriously. If you're not sure about your behavior, please talk with us in case of misunderstandings.
+
+You can test your code on https://acm.sjtu.edu.cn/OnlineJudge/problemset/654.
+
+</br>
+
+# Grade
+- Allocator: 30%
+- Shared_ptr: 30%
+- Unique_ptr: 30%
+- Code Review: 10%
+
 <br/>
 <p  align="center"> <b>GOOD LUCK</b> </p> 
