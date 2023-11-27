@@ -26,6 +26,7 @@ The prefered way to construct a  std::unique_ptr is to use a function called `st
 
 	```cpp
 	UniquePtr<int> ptr{make_unique<int>(10)};
+ 	UniquePtr<vector<int>> ptr2{make_unique<vector<int>>(0,1,2,3)};
 	```
 
 - **Default Constructor**
