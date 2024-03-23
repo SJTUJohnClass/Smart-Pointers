@@ -240,3 +240,5 @@ You can test your code on https://acm.sjtu.edu.cn/OnlineJudge/problemset/654.
 
 <br/>
 <p  align="center"> <b>GOOD LUCK</b> </p> 
+
+Acknowledgement : Amirkabir University of Technology 1400-2 —— Advanced Programming Course Project 4 'Smart Pointers'
