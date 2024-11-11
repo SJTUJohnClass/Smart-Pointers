@@ -2,6 +2,7 @@
 #define WEAK_PTR
 
 #include "shared_ptr.h" // Include SharedPtr definition
+// When submitting to ACMOJ, please replace this with the content inside shared_ptr.h
 
 template <typename T>
 class WeakPtr {
