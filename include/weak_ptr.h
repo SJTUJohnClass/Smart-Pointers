@@ -31,10 +31,6 @@ public:
 
 private:
     // Add your private members here
-    // Typically includes:
-    // - Pointer to the managed object
-    // - Pointer to control block
-    // - Helper functions for reference counting
 };
 
 // Non-member swap function
