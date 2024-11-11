@@ -3,9 +3,9 @@
 
 ## Outline
 
-In this homework we are going to implement our own smart pointers. Specifically we want to implement our custom `SharedPtr` and `UniquePtr` classes with almost all functionality of std::shared_ptr and std::unique_ptr.
+In this homework we are going to implement our own smart pointers. Specifically we want to implement our custom `SharedPtr`, `UniquePtr` and `WeakPtr` classes with almost all functionality of std::shared_ptr, std::unique_ptr and std::weak_ptr.
 
-We want to implement 2 class templates called `UniquePtr` and `SharedPtr` with the functions described in the following sections.
+We want to implement 3 class templates called `UniquePtr`, `SharedPtr` and `WeakPtr` with the functions described in the following sections.
 
 </br>
 
