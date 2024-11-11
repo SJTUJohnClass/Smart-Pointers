@@ -209,6 +209,152 @@ The reset() function can have a input and make a new pointer with it after delet
 	```
 
 </br> 
+
+# WeakPtr Class
+
+Define a template class named `WeakPtr` and add the following functions to the class.
+
+This class works in conjunction with the `SharedPtr` class to help break potential circular references. Unlike `SharedPtr`, a `WeakPtr` does not own the object it points to - it tracks an object owned by one or more `SharedPtr` instances.
+
+## Required Functions
+
+- **Constructor**
+  Implement a constructor that takes a `SharedPtr` as its argument. The `WeakPtr` will track the object owned by the `SharedPtr` without increasing its reference count.
+
+    ```cpp
+  SharedPtr<int> sp{new int{10}};
+  WeakPtr<int> wp{sp};
+    ```
+
+- **Default Constructor**
+  Implement a default constructor that creates an empty `WeakPtr`.
+
+    ```cpp
+  WeakPtr<int> wp;
+    ```
+
+- **Copy Constructor**
+  Implement a copy constructor that creates a `WeakPtr` from another `WeakPtr`.
+
+    ```cpp
+  WeakPtr<int> wp1{sp};
+  WeakPtr<int> wp2{wp1};
+    ```
+
+- **Move Constructor**
+  Implement a move constructor that transfers ownership from another `WeakPtr`.
+
+    ```cpp
+  WeakPtr<int> wp1{sp};
+  WeakPtr<int> wp2{std::move(wp1)};
+    ```
+
+- **Copy Assignment Operator**
+  Allow assigning from another `WeakPtr` or from a `SharedPtr`.
+
+    ```cpp
+  WeakPtr<int> wp1, wp2;
+  SharedPtr<int> sp{new int{10}};
+  wp1 = sp;
+  wp2 = wp1;
+    ```
+
+- **Move Assignment Operator**
+  Implement move assignment that transfers ownership from another `WeakPtr`.
+
+    ```cpp
+  WeakPtr<int> wp1{sp}, wp2;
+  wp2 = std::move(wp1);
+    ```
+
+- **Destructor**
+  Implement a destructor that properly cleans up the weak reference.
+
+    ```cpp
+  ~WeakPtr()
+    ```
+
+- **lock**
+  The lock() function attempts to convert the `WeakPtr` to a `SharedPtr`. If the object has been deleted, it returns an empty `SharedPtr`.
+
+    ```cpp
+  WeakPtr<int> wp{sp};
+  SharedPtr<int> sp2 = wp.lock();
+  if(sp2) {
+      std::cout << *sp2 << std::endl;  // Use the object safely
+  }
+    ```
+
+- **expired**
+  The expired() function checks if the object being pointed to has been deleted.
+
+    ```cpp
+  WeakPtr<int> wp{sp};
+  if(!wp.expired()) {
+      SharedPtr<int> sp2 = wp.lock();
+      // Use sp2...
+  }
+    ```
+
+- **use_count**
+  Returns the number of `SharedPtr` instances that share ownership of the object.
+
+    ```cpp
+  SharedPtr<int> sp1{new int{10}};
+  SharedPtr<int> sp2{sp1};
+  WeakPtr<int> wp{sp1};
+  std::cout << wp.use_count() << std::endl;  // output: 2
+    ```
+
+- **reset**
+  The reset() function releases the reference to the managed object.
+
+    ```cpp
+  WeakPtr<int> wp{sp};
+  wp.reset();  // wp no longer references anything
+    ```
+
+- **swap**
+  Swaps the contents of two `WeakPtr` objects.
+
+    ```cpp
+  WeakPtr<int> wp1{sp1}, wp2{sp2};
+  wp1.swap(wp2);  // wp1 now watches sp2's object, wp2 watches sp1's
+    ```
+
+## Notes on Implementation
+
+1. A `WeakPtr` should not affect the reference count used by `SharedPtr` for deletion.
+2. `WeakPtr` should work with the control block used by `SharedPtr` to track both strong and weak references.
+3. The `WeakPtr` should become expired when the last `SharedPtr` to its object is destroyed.
+4. All member functions should be exception-safe.
+5. Move operations should be marked as noexcept.
+
+## Example Usage
+
+Here's a typical use case showing how `WeakPtr` can break circular references:
+
+```cpp
+struct Node {
+    SharedPtr<Node> next;
+    WeakPtr<Node> prev;  // Using WeakPtr instead of SharedPtr
+};
+
+SharedPtr<Node> node1{new Node};
+SharedPtr<Node> node2{new Node};
+
+node1->next = node2;
+node2->prev = node1;  // No circular reference!
+```
+
+## Optional Challenge for weak_ptr
+
+These challenges are totally optional. They will not be tested or graded: 
+
+- Implement thread-safe reference counting for the weak references.
+- Support arrays and make it work with custom deleters.
+- Add owner_before() member function for consistent ordering in associative containers.
+
  
 # Challenge
 - If you reached this section congratulations, there is only one part left. Make arrangements so you can use your custom smart pointers in an *if condition*, the condition should return *false* if your smart pointer contains a `nullptr` and otherwise it should return *true*.
@@ -222,7 +368,7 @@ The reset() function can have a input and make a new pointer with it after delet
 	if(ptr) // => false
         // some other thing
 	```
-	Make this arrangement for both `UniquePtr` and `SharedPtr` classes.
+	Make this arrangement for both `UniquePtr`, `SharedPtr` and `WeakPtr` classes.
 </br>
 
 # Note
@@ -233,9 +379,9 @@ You can test your code on https://acm.sjtu.edu.cn/OnlineJudge/problemset/654.
 </br>
 
 # Grade
-- Allocator: 30%
 - Shared_ptr: 30%
 - Unique_ptr: 30%
+- Weak_ptr: 30%
 - Code Review: 10%
 
 <br/>
