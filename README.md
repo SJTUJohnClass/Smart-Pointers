@@ -28,6 +28,7 @@ The prefered way to construct a  std::unique_ptr is to use a function called `st
 	UniquePtr<int> ptr{make_unique<int>(10)};
  	UniquePtr<std::vector<int>> ptr2{make_unique<std::vector<int>>(0,1,2,3)};
 	```
+**Be careful: Both l_values and r_values can be passed into this function.**
 
 - **Default Constructor**
 Implement a default constructor for your class so the below code works and assign `nullptr` to `_p`.
