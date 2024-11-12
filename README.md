@@ -127,6 +127,7 @@ The prefered way to construct a  std::shared_ptr is to use a function called `st
 	```cpp
 	SharedPtr<int> ptr{make_shared<int>(10)};
 	```
+ 	**Be careful: Both l_values and r_values can be passed into this function.**
 
 - **Default Constructor**
 Implement a default constructor for your class so the below code works and assign nullptr to `_p`.
