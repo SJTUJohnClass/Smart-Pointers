@@ -354,7 +354,6 @@ node2->prev = node1;  // No circular reference!
 These challenges are totally optional. They will not be tested or graded: 
 
 - Implement thread-safe reference counting for the weak references.
-- Support arrays and make it work with custom deleters.
 - Add owner_before() member function for consistent ordering in associative containers.
 
  
