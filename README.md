@@ -357,35 +357,35 @@ These challenges are totally optional. They will not be tested or graded:
 - Support arrays and make it work with custom deleters. For example:
   ```cpp
   void TEST10(double& score) {
-    // Test weak_ptr with arrays
-    SharedPtr<int[]> sp1{new int[5]{1, 2, 3, 4, 5}};
-    WeakPtr<int[]> wp1(sp1);
-
-    // Test that after move, the moved-from weak_ptr is expired
-    WeakPtr<int[]> wp2(std::move(wp1));
-    // A moved-from weak_ptr should be expired
-    if (!wp1.expired()) {
-        result = false;
-        return;
+	    // Test weak_ptr with arrays
+	    SharedPtr<int[]> sp1{new int[5]{1, 2, 3, 4, 5}};
+	    WeakPtr<int[]> wp1(sp1);
+	
+	    // Test that after move, the moved-from weak_ptr is expired
+	    WeakPtr<int[]> wp2(std::move(wp1));
+	    // A moved-from weak_ptr should be expired
+	    if (!wp1.expired()) {
+	        result = false;
+	        return;
+	    }
+	
+	    // Test that the moved-to weak_ptr works correctly
+	    SharedPtr<int[]> sp2 = wp2.lock();
+	    if (!sp2 || sp2[0] != 1 || sp2[1] != 2) {
+	        result = false;
+	        return;
+	    }
+	
+	    sp1.reset();
+	    wp2.reset();  // Need to reset wp2 explicitly
+	    if (wp2.lock()) {
+	        result = false;
+	        return;
+	    }
+	
+	    score += 0.055;
     }
-
-    // Test that the moved-to weak_ptr works correctly
-    SharedPtr<int[]> sp2 = wp2.lock();
-    if (!sp2 || sp2[0] != 1 || sp2[1] != 2) {
-        result = false;
-        return;
-    }
-
-    sp1.reset();
-    wp2.reset();  // Need to reset wp2 explicitly
-    if (wp2.lock()) {  // Changed to check lock() instead of expired()
-        result = false;
-        return;
-    }
-
-    score += 0.055;
-}
-```
+    ```
 
 - Add owner_before() member function for consistent ordering in associative containers.
 
