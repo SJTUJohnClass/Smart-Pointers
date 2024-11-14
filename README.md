@@ -385,7 +385,8 @@ These challenges are totally optional. They will not be tested or graded:
 
     score += 0.055;
 }
-  ```
+```
+
 - Add owner_before() member function for consistent ordering in associative containers.
 
 </br>
