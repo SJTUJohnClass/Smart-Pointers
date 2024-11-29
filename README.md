@@ -3,7 +3,7 @@
 
 ## Outline
 
-In this homework we are going to implement our own smart pointers. Specifically we want to implement our custom `SharedPtr`, `UniquePtr` and `WeakPtr` classes with almost all functionality of std::shared_ptr, std::unique_ptr and std::weak_ptr.
+In this homework, we are going to implement our own smart pointers. Specifically, we want to implement our custom `SharedPtr`, `UniquePtr` and `WeakPtr` classes with almost all functionality of std::shared_ptr, std::unique_ptr and std::weak_ptr.
 
 We want to implement 3 class templates called `UniquePtr`, `SharedPtr` and `WeakPtr` with the functions described in the following sections.
 
@@ -22,7 +22,7 @@ Implement a constructor for your class so the below code would work. Your constr
 	```
 
 - **make_unique** (outside the class)
-The prefered way to construct a  std::unique_ptr is to use a function called `std::make_unique`. implement a similar function and make this code work:
+The preferred way to construct a  std::unique_ptr is to use a function called `std::make_unique`. Implement a similar function and make this code work:
 
 	```cpp
 	UniquePtr<int> ptr{make_unique<int>(10)};
@@ -37,7 +37,7 @@ Implement a default constructor for your class so the below code works and assig
 	UniquePtr<int> ptr;
 	```
 - **Destructor**
-As you know when dealing a with dynamic pointer in a class, implementing destructor is a neccessaty so implement a proper destructor and delete your dynamic pointer (*hint:* assign `nullptr` after deletion).
+As you know when dealing a with dynamic pointer in a class, implementing a destructor is a necessity so implement a proper destructor and delete your dynamic pointer (*hint:* assign `nullptr` after deletion).
 
 	```cpp
 	~UniquePtr()
@@ -66,14 +66,14 @@ The get() function should return the raw pointer stored in the class.
 	std::cout << ptr.get() << std::endl; // output: raw pointer stored in the class
 	```
 - **Operator***
-Smart pointers should be able to be dereferenced exactly like raw pointers. make this code work:
+Smart pointers should be able to be dereferenced exactly like raw pointers. Make this code work:
 
 	```cpp
 	UniquePtr<int> ptr{new int{10}};
 	std::cout << *ptr << std::endl; // output: 10
 	```
 - **Operator->**
-Smart pointers can use the arrow operator like normal pointers. make this code work as well:
+Smart pointers can use the arrow operator like normal pointers. Make this code work as well:
 
 	```cpp
 	UniquePtr<std::string> ptr{new std::string{"hello"}};
@@ -88,7 +88,7 @@ The reset() function will delete the pointer and assign `nullptr` to it:
 	```
 
 - **reset**
-The reset() function can have a input and make a new pointer with it after deleting the old pointer:
+The reset() function can have an input and make a new pointer with it after deleting the old pointer:
 
 	```cpp
 	UniquePtr<std::string> ptr{new std::string{"hello"}};
@@ -122,7 +122,7 @@ Implement a constructor for your class so the below code would work. Your constr
 	```
 
 - **make_shared** (outside the class)
-The prefered way to construct a  std::shared_ptr is to use a function called `std::make_shared`. implement a similar function and make the code below work.
+The preferred way to construct a  std::shared_ptr is to use a function called `std::make_shared`. Implement a similar function and make the code below work.
 
 	```cpp
 	SharedPtr<int> ptr{make_shared<int>(10)};
@@ -136,14 +136,14 @@ Implement a default constructor for your class so the below code works and assig
 	SharedPtr<int> ptr;
 	```
 - **Destructor**
-As you know when dealing with dynamic pointers inside a class implementing destructor is a neccessaty so implement a proper destructor and delete your dynamic pointers (do not forget to assign `nullptr` after deletion).
+As you know when dealing with dynamic pointers inside a class implementing a destructor is a necessity so implement a proper destructor and delete your dynamic pointers (do not forget to assign `nullptr` after deletion).
 
 	```cpp
 	~SharedPtr()
 	```
 
 - **Copy Constructor**
-As you already know A key difference between `SharedPtr` and `UniquePtr` classes is that we can use copy constrctor and make a copy of `SharedPtr`s. so the code below should run smoothly.
+As you already know A key difference between `SharedPtr` and `UniquePtr` classes is that we can use copy constructor and make a copy of `SharedPtr`s, so the code below should run smoothly.
 
 	```cpp
 	SharedPtr<int> ptr1{new int{10}};
@@ -151,7 +151,7 @@ As you already know A key difference between `SharedPtr` and `UniquePtr` classes
 	```
 
 - **Operator=**
-Exactly like the previous section we can have operator= for `SharedPtr`s. again the code below should run without any errors.
+Exactly like the previous section we can have operator= for `SharedPtr`s. Again the code below should run without any errors.
 
 	```cpp
 	SharedPtr<int> ptr1{new int{10}};
@@ -160,9 +160,9 @@ Exactly like the previous section we can have operator= for `SharedPtr`s. again 
 	```
 
 - **use_count**
-In `SharedPtr`s we should have the ability to count the number of instances pointing to a same place. to do this you have to define another member variabel for your `SharedPtr` class and keep track of this number.
+In `SharedPtr`s we should have the ability to count the number of instances pointing to the same place. To do this you have to define another member variable for your `SharedPtr` class and keep track of this number.
 
-	**note.** you may have to make some adjusments in the previous functions (such as constructor and ...) to do this.
+	**note.** you may have to make some adjustments in the previous functions (such as constructor and ...) to do this.
 
 	```cpp
 	SharedPtr<int> ptr1{make_shared<int>(10)};
@@ -180,14 +180,14 @@ The get() function should return the raw pointer stored in the class.
 	std::cout << ptr.get() << std::endl; // output: raw pointer of the class
 	```
 - **Operator***
-Smart pointers should be able to be dereferenced exactly like raw pointers. make this code work:
+Smart pointers should be able to be dereferenced exactly like raw pointers. Make this code work:
 
 	```cpp
 	SharedPtr<int> ptr{new int{10}};
 	std::cout << *ptr << std::endl; // output: 10
 	```
 - **Operator->**
-Smart pointers can use the arrow operator like raw pointers. make this code work:
+Smart pointers can use the arrow operator like raw pointers. Make this code work:
 
 	```cpp
 	SharedPtr<std::string> ptr{new std::string{"hello"}};
@@ -195,14 +195,14 @@ Smart pointers can use the arrow operator like raw pointers. make this code work
 	```
 
 - **reset**
-The reset() function will delete the pointer and assigns `nullptr` to it:
+The reset() function will delete the pointer and assign `nullptr` to it:
 
 	```cpp
 	void reset();
 	```
 
 - **reset**
-The reset() function can have a input and make a new pointer with it after deleting the old pointer:
+The reset() function can have an input and make a new pointer with it after deleting the old pointer:
 
 	```cpp
 	SharedPtr<std::string> ptr{new std::string{"hello"}};
@@ -328,7 +328,7 @@ This class works in conjunction with the `SharedPtr` class to help break potenti
 
 1. A `WeakPtr` should not affect the reference count used by `SharedPtr` for deletion.
 2. `WeakPtr` should work with the control block used by `SharedPtr` to track both strong and weak references.
-3. The `WeakPtr` should become expired when the last `SharedPtr` to its object is destroyed.
+3. The `WeakPtr` should expire when the last `SharedPtr` to its object is destroyed.
 4. All member functions should be exception-safe.
 5. Move operations should be marked as noexcept.
 
@@ -354,7 +354,7 @@ node2->prev = node1;  // No circular reference!
 These challenges are totally optional. They will not be tested or graded: 
 
 - Implement thread-safe reference counting for the weak references.
-- Support arrays and make it work with custom deleters. For example:
+- Support arrays and make them work with custom deleters. For example:
   ```cpp
   void TEST10(double& score) {
 	    // Test weak_ptr with arrays
