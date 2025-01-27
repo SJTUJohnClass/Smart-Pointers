@@ -330,7 +330,7 @@ This class works in conjunction with the `SharedPtr` class to help break potenti
 2. `WeakPtr` should work with the control block used by `SharedPtr` to track both strong and weak references.
 3. The `WeakPtr` should become expired when the last `SharedPtr` to its object is destroyed.
 4. All member functions should be exception-safe.
-5. Move operations should be marked as noexcept.
+5. Move operations should be marked as noexcept (Why?).
 
 ## Example Usage
 
